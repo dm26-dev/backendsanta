@@ -16,6 +16,14 @@ let usersNames = [
     'Ricardo', 'Novio Ricardo'
 ]
 
+let usersNamesReset = [
+    'David', 'Papa David', 'Mama David',
+    'Ruddy', 'Papa Ruddy', 'Mama Ruddy', 'Daniel',
+    'Diana', 'Alfredo', 'Nana', 'Pipe Hijo Diana',
+    'Fanny', 'Sebas', 'Pipe Hijo Fanny',
+    'Ricardo', 'Novio Ricardo'
+]
+
 let pendientes = [
     'David', 'Papa David', 'Mama David',
     'Ruddy', 'Papa Ruddy', 'Mama Ruddy', 'Daniel',
@@ -83,7 +91,7 @@ app.post('/users', (req, res) => {
 
 
 app.get('/clear', (req, res) => {
-    usersDB = usersNames.map(user => ({ name: user, enabled: true, secretSanta: '' }))
+    usersDB = usersNamesReset.map(user => ({ name: user, enabled: true, secretSanta: '' }))
     res.json({ res: "Limpieza exitosa" })
 })
 
