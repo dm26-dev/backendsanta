@@ -87,6 +87,9 @@ app.get('/clear', (req, res) => {
     res.json({ res: "Limpieza exitosa" })
 })
 
-app.listen(3001, () => {
+
+const PORT = process.env.PORT || 3001
+
+app.listen(PORT, () => {
     console.log("Servidor corriendo puerto 3001")
 })
