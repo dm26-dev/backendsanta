@@ -1,16 +1,27 @@
 {
   "name": "backendsanta",
   "version": "1.0.0",
-  "description": "",
+  "description": "Deploy express js to vercel.",
   "main": "index.js",
+  "engines": {
+    "node" : "14.x"
+  },
   "scripts": {
     "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dm26-dev/backendsanta.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dm26-dev/backendsanta/issues"
+  },
+  "homepage": "https://github.com/dm26-dev/backendsanta#readme",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.18.2"
+    "express": "^4.17.1"
   }
 }
