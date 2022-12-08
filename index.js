@@ -92,6 +92,7 @@ app.post('/users', (req, res) => {
 
 app.get('/clear', (req, res) => {
     usersDB = usersNamesReset.map(user => ({ name: user, enabled: true, secretSanta: '' }))
+    usersNames = usersNamesReset
     res.json({ res: "Limpieza exitosa" })
 })
 
