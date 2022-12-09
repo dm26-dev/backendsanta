@@ -7,8 +7,8 @@ let corsOptions = {
 }
 app.use(cors(corsOptions))
 
-// DATABASE
-let usersNames = [
+// NO TOCAR
+let namesDB = [
     'David', 'Papa David', 'Mama David',
     'Ruddy', 'Papa Ruddy', 'Mama Ruddy', 'Daniel',
     'Diana', 'Alfredo', 'Nana', 'Pipe Hijo Diana',
@@ -16,22 +16,7 @@ let usersNames = [
     'Ricardo', 'Novio Ricardo'
 ]
 
-let usersNamesReset = [
-    'David', 'Papa David', 'Mama David',
-    'Ruddy', 'Papa Ruddy', 'Mama Ruddy', 'Daniel',
-    'Diana', 'Alfredo', 'Nana', 'Pipe Hijo Diana',
-    'Fanny', 'Sebas', 'Pipe Hijo Fanny',
-    'Ricardo', 'Novio Ricardo'
-]
-
-let pendientes = [
-    'David', 'Papa David', 'Mama David',
-    'Ruddy', 'Papa Ruddy', 'Mama Ruddy', 'Daniel',
-    'Diana', 'Alfredo', 'Nana', 'Pipe Hijo Diana',
-    'Fanny', 'Sebas', 'Pipe Hijo Fanny',
-    'Ricardo', 'Novio Ricardo'
-]
-
+// NO TOCAR
 let usersDB = [
     { name: 'David', enabled: true, secretSanta: '' },
     { name: 'Papa David', enabled: true, secretSanta: '' },
@@ -51,16 +36,34 @@ let usersDB = [
     { name: 'Novio Ricardo', enabled: true, secretSanta: '' }
 ]
 
+// PERSONAS QUE YA UTILIZARON LA APP
+let pendingNamesforChoose = [
+    'David', 'Papa David', 'Mama David',
+    'Ruddy', 'Papa Ruddy', 'Mama Ruddy', 'Daniel',
+    'Diana', 'Alfredo', 'Nana', 'Pipe Hijo Diana',
+    'Fanny', 'Sebas', 'Pipe Hijo Fanny',
+    'Ricardo', 'Novio Ricardo'
+]
+
+//FALTAN POR SER SELECCIONADOS
+let selectedNames = [
+    'David', 'Papa David', 'Mama David',
+    'Ruddy', 'Papa Ruddy', 'Mama Ruddy', 'Daniel',
+    'Diana', 'Alfredo', 'Nana', 'Pipe Hijo Diana',
+    'Fanny', 'Sebas', 'Pipe Hijo Fanny',
+    'Ricardo', 'Novio Ricardo'
+]
+
 app.get('/', (req, res) => {
     res.send('Welcome to the app')
 })
 
 app.get('/names', (req, res) => {
-    res.json({usersNames,cantidad: usersNames.length})
+    res.json({ pendingNamesforChoose, cantidad: pendingNamesforChoose.length })
 })
 
 app.get('/pendientes', (req, res) => {
-    res.json({ pendientes, cantidad: pendientes.length })
+    res.json({ selectedNames, cantidad: selectedNames.length })
 })
 
 app.get('/users', (req, res) => {
@@ -70,32 +73,30 @@ app.get('/users', (req, res) => {
 app.post('/users', (req, res) => {
 
     const newUser = req.body
+
     const userHide = newUser.name
-
     const userHidePendiente = newUser.secretSanta
-
-    console.log(userHide)
 
     // CHANGE VALUE
     const captureIndex = usersDB.findIndex(user => user.name === newUser.name)
     usersDB[captureIndex] = newUser
 
-    // DELETE USER ARRAY
-
-    usersNames = usersNames.filter(user => user !== userHide)
-    pendientes = pendientes.filter(user => user !== userHidePendiente)
-
-    res.json(usersDB)
+    // SACAR NAME DEL ARRAY USER
+    pendingNamesforChoose = pendingNamesforChoose.filter(user => user !== userHide)
+    
+    // SACAR DE LOS ESCOJIDOS
+    selectedNames = selectedNames.filter(user => user !== userHidePendiente)
+    
+    res.json({usersDB,pendingNamesforChoose,selectedNames})
 
 })
-
 
 app.get('/clear', (req, res) => {
-    usersDB = usersNamesReset.map(user => ({ name: user, enabled: true, secretSanta: '' }))
-    usersNames = usersNamesReset
-    res.json({ res: "Limpieza exitosa" })
+    usersDB = namesDB.map(user => ({ name: user, enabled: true, secretSanta: '' }))
+    pendingNamesforChoose = namesDB
+    selectedNames = namesDB
+    res.json({ res: "Limpieza exitosa", pendingNamesforChoose, selectedNames })
 })
-
 
 const PORT = process.env.PORT || 3001
 
