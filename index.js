@@ -55,7 +55,7 @@ let selectedNames = [
 ]
 
 app.get('/', (req, res) => {
-    res.send('Welcome to the app')
+    res.send('Welcome to the app secret')
 })
 
 app.get('/names', (req, res) => {
