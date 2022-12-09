@@ -70,7 +70,7 @@ app.get('/users', (req, res) => {
     res.json(usersDB)
 })
 
-app.post('/users', (req, res) => {
+app.post('/usersdb', (req, res) => {
 
     const newUser = req.body
 
