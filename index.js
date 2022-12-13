@@ -11,7 +11,7 @@ app.use(cors(corsOptions))
 let namesDB = [
     'David', 'Papa David', 'Mama David',
     'Ruddy', 'Papa Ruddy', 'Mama Ruddy', 'Daniel',
-    'Diana', 'Alfredo', 'Nana', 'Pipe Hijo Diana',
+    'Diana', 'Alfredo', 'Nana', 'Isaac',
     'Fanny', 'Sebas', 'Pipe Hijo Fanny',
     'Ricardo', 'Novio Ricardo'
 ]
@@ -28,7 +28,7 @@ let usersDB = [
     { name: 'Diana', enabled: true, secretSanta: '' },
     { name: 'Alfredo', enabled: true, secretSanta: '' },
     { name: 'Nana', enabled: true, secretSanta: '' },
-    { name: 'Pipe Hijo Diana', enabled: true, secretSanta: '' },
+    { name: 'Isaac', enabled: true, secretSanta: '' },
     { name: 'Fanny', enabled: true, secretSanta: '' },
     { name: 'Sebas', enabled: true, secretSanta: '' },
     { name: 'Pipe Hijo Fanny', enabled: true, secretSanta: '' },
@@ -40,7 +40,7 @@ let usersDB = [
 let pendingNamesforChoose = [
     'David', 'Papa David', 'Mama David',
     'Ruddy', 'Papa Ruddy', 'Mama Ruddy', 'Daniel',
-    'Diana', 'Alfredo', 'Nana', 'Pipe Hijo Diana',
+    'Diana', 'Alfredo', 'Nana', 'Isaac',
     'Fanny', 'Sebas', 'Pipe Hijo Fanny',
     'Ricardo', 'Novio Ricardo'
 ]
@@ -49,7 +49,7 @@ let pendingNamesforChoose = [
 let selectedNames = [
     'David', 'Papa David', 'Mama David',
     'Ruddy', 'Papa Ruddy', 'Mama Ruddy', 'Daniel',
-    'Diana', 'Alfredo', 'Nana', 'Pipe Hijo Diana',
+    'Diana', 'Alfredo', 'Nana', 'Isaac',
     'Fanny', 'Sebas', 'Pipe Hijo Fanny',
     'Ricardo', 'Novio Ricardo'
 ]
